@@ -1,0 +1,16 @@
+<nav class="light-blue">
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <a href="#!" class="brand-logo">Pavan</a>
+      <ul class="right hide-on-med-and-down">
+        <li><%= link_to('Solutions', solutions_path) %>
+        </li>
+        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        </li>
+        <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+        <li><%= link_to('Problems', problems_path) %></li>
+        <li><%= link_to('Admin Panel', rails_admin_path) %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Problems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @problems.each do |problem| %>
+      <tr>
+        <td><%= problem.title %></td>
+        <td><%= problem.description %></td>
+        <td><%= link_to 'Show', problem %></td>
+        <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
+        <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% unless current_user.solver_role? %>
+  <%= link_to 'New Problem', new_problem_path %>
+<% end %>

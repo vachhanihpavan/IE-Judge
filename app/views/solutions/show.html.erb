@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Submitted by:</strong>
+  <%= @solution.submitted_by %>
+</p>
+
+<p>
+  <strong>Submitted time:</strong>
+  <%= @solution.submitted_time %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @solution.language %>
+</p>
+
+<p>
+  <strong>Problem:</strong>
+  <%= @solution.problem_id %>
+</p>
+
+<p>
+  <strong>Output:</strong>
+  <%= simple_format @solution.output %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @solution.result %>
+</p>
+
+<%= link_to 'Edit', edit_solution_path(@solution) %> |
+<%= link_to 'Back', solutions_path %>

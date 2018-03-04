@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @problem.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= simple_format @problem.description %>
+</p>
+
+<p>
+  <strong>Testcases:</strong>
+  <%= simple_format @problem.testcases %>
+</p>
+
+<p>
+  <strong>Input:</strong>
+  <%= simple_format @problem.input %>
+</p>
+
+<p>
+  <strong>Correct output:</strong>
+  <%= simple_format @problem.correct_output %>
+</p>
+
+<%= link_to 'Edit', edit_problem_path(@problem) %> |
+<%= link_to 'Back', problems_path %>

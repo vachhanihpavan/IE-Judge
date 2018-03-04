@@ -1,0 +1,46 @@
+<%= form_with(model: problem, local: true) do |form| %>
+  <% if problem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
+
+      <ul>
+      <% problem.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :problem_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :problem_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :testcases %>
+    <%= form.text_area :testcases, id: :problem_testcases %>
+  </div>
+
+  <div class="field">
+    <%= form.label :input %>
+    <%= form.text_area :input, id: :problem_input %>
+  </div>
+
+  <div class="field">
+    <%= form.label :correct_output %>
+    <%= form.text_area :correct_output, id: :problem_correct_output %>
+  </div>
+
+  <div class="field">
+    <%= form.file_field :correct_code %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
