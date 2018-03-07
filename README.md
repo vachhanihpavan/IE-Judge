@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+###For Login use:
+*Solver: <br />test2@test.com<br />
+         password<br />
+*Creator: <br />test@test.com<br />
+         password<br />
 
-Things you may want to cover:
+###For admin panel:<br />
+**Don't mess around here or change anything**
+localhost:3000/admin
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
