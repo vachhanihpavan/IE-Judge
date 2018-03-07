@@ -1,3 +1,5 @@
+require 'open3'
+require 'fileutils'
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
   # GET /solutions
@@ -14,17 +16,21 @@ class SolutionsController < ApplicationController
   # GET /solutions/new
   def new
     @solution = Solution.new
+    @all_problems = Problem.all
   end
 
   # GET /solutions/1/edit
   def edit
+    @all_problems = Problem.all
   end
 
   # POST /solutions
   # POST /solutions.json
   def create
-    @solution = Solution.new(solution_params)
-
+    my_params = solution_params
+    my_params[:submitted_by] = current_user.id
+    my_params[:submitted_time] = Time.now
+    @solution = Solution.new(my_params)
     respond_to do |format|
       if @solution.save
         format.html { redirect_to @solution, notice: 'Solution was successfully created.' }
@@ -60,6 +66,22 @@ class SolutionsController < ApplicationController
     end
   end
 
+  def compile(parameters)
+    if parameters[:language].to_s == "c"
+      puts "Here #{parameters[:submitted_code].original_filename}"
+      compile_command = "cc public/codes/submitted_codes/#{parameters[:submitted_code].original_filename}"
+      stdout, stderr, stdstatus = Open3.capture3(compile_command)
+      puts stdstatus
+      puts stderr
+      puts stdout
+      run_command = "./a.out"
+      stdout, stderr, stdstatus = Open3.capture3(run_command)
+      puts stdstatus
+      puts stderr
+      puts stdout
+      return stdout
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_solution
@@ -68,6 +90,6 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:submitted_by, :submitted_code, :submitted_time, :language, :problem_id, :output, :result)
+      params.require(:solution).permit(:submitted_code, :language, :problem_id)
     end
 end

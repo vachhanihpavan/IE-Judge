@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Solution:</strong>
+  <%= @submission.solution_id %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @submission.result %>
+</p>
+
+<p>
+  <strong>Output:</strong>
+  <%= @submission.output %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>
