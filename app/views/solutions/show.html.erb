@@ -21,11 +21,6 @@
 </p>
 
 
-<p>
-  <strong>Result:</strong>
-  <%= @solution.result %>
-</p>
-
 <%= link_to 'Edit', edit_solution_path(@solution) %> |
-<%= link_to 'Back', solutions_path %>
-<%= link_to 'Check Status', new_submission_path(:solution_id => @solution.id, :code_name => @solution.submitted_code_file_name) %>
+<%= link_to 'Back to Solutions', solutions_path %> |
+<%= link_to 'Submit Solution', new_submission_path(:solution_id => @solution.id, :code_name => @solution.submitted_code_file_name) %>

@@ -1,6 +1,5 @@
-#include<stdio.h>
+#include<bits/stdc++.h>
 int main()
 {
 	printf("Hello Pavan");
-	return 0;
-}
+

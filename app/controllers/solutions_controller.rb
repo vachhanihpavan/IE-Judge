@@ -2,6 +2,7 @@ require 'open3'
 require 'fileutils'
 class SolutionsController < ApplicationController
   before_action :set_solution, only: [:show, :edit, :update, :destroy]
+  before_action :set_problems, only: [:show, :edit, :update, :destroy]
   # GET /solutions
   # GET /solutions.json
   def index
@@ -15,13 +16,12 @@ class SolutionsController < ApplicationController
 
   # GET /solutions/new
   def new
+    puts "#{@all_problems}"
     @solution = Solution.new
-    @all_problems = Problem.all
   end
 
   # GET /solutions/1/edit
   def edit
-    @all_problems = Problem.all
   end
 
   # POST /solutions
@@ -70,6 +70,9 @@ class SolutionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_solution
       @solution = Solution.find(params[:id])
+    end
+    def set_problems
+      @all_problems = Problem.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

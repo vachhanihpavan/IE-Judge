@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= form.label :problem_id %>
-    <%= form.collection_select(:problem_id, @all_problems, :id, :title)%>
+    <%= form.collection_select(:problem_id, Problem.all, :id, :title)%>
   </div>
 
   <p>
