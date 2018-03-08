@@ -20,10 +20,6 @@
   <%= @solution.problem_id %>
 </p>
 
-<p>
-  <strong>Output:</strong>
-  <%= simple_format @solution.output %>
-</p>
 
 <p>
   <strong>Result:</strong>
@@ -32,3 +28,4 @@
 
 <%= link_to 'Edit', edit_solution_path(@solution) %> |
 <%= link_to 'Back', solutions_path %>
+<%= link_to 'Check Status', new_submission_path(:solution_id => @solution.id, :code_name => @solution.submitted_code_file_name) %>

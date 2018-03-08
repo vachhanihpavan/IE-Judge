@@ -13,17 +13,12 @@
 
   <div class="field">
     <%= form.label :solution_id %>
-    <%= form.text_field :solution_id, id: :submission_solution_id %>
+    <%= form.text_field :solution_id, id: :submission_solution_id, value: params[:solution_id] %>
   </div>
 
   <div class="field">
-    <%= form.label :result %>
-    <%= form.text_field :result, id: :submission_result %>
-  </div>
-
-  <div class="field">
-    <%= form.label :output %>
-    <%= form.text_area :output, id: :submission_output %>
+    <%= form.label :code_name %>
+    <%= form.text_field :code_name, id: :submission_code_name, value: params[:code_name] %>
   </div>
 
   <div class="actions">

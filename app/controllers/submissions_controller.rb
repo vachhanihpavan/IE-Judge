@@ -1,3 +1,6 @@
+require 'open3'
+require 'fileutils'
+require 'active_support/core_ext/hash'
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
 
@@ -24,7 +27,11 @@ class SubmissionsController < ApplicationController
   # POST /submissions
   # POST /submissions.json
   def create
+    out_string = compile("c",submission_params[:code_name])
+    submission_params[:output] = out_string
+    puts "#{submission_params[:output]}"
     @submission = Submission.new(submission_params)
+
 
     respond_to do |format|
       if @submission.save
@@ -61,6 +68,25 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def compile(lang, name)
+    if lang.to_s == "c"
+      puts "Here #{name}"
+      compile_command = "cc public/codes/submitted_codes/#{name}"
+      stdout, stderr, stdstatus = Open3.capture3(compile_command)
+      puts stdstatus
+      puts stderr
+      puts stdout
+      run_command = "./a.out"
+      stdout2, stderr2, stdstatus2 = Open3.capture3(run_command)
+      puts stdstatus
+      puts stderr
+      puts stdout2
+      stdout2 = stdout2.to_s
+      return stdout2
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
@@ -69,6 +95,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:solution_id, :result, :output)
+      params.require(:submission).permit(:solution_id, :code_name, :output)
     end
 end

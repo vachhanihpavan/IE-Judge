@@ -66,22 +66,6 @@ class SolutionsController < ApplicationController
     end
   end
 
-  def compile(parameters)
-    if parameters[:language].to_s == "c"
-      puts "Here #{parameters[:submitted_code].original_filename}"
-      compile_command = "cc public/codes/submitted_codes/#{parameters[:submitted_code].original_filename}"
-      stdout, stderr, stdstatus = Open3.capture3(compile_command)
-      puts stdstatus
-      puts stderr
-      puts stdout
-      run_command = "./a.out"
-      stdout, stderr, stdstatus = Open3.capture3(run_command)
-      puts stdstatus
-      puts stderr
-      puts stdout
-      return stdout
-    end
-  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_solution
