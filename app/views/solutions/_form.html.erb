@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= form.label :language %>
-    <%= form.text_field :language, id: :solution_language %>
+    <%= form.select :language, ['c', 'c++', 'ruby'], :prompt => "Select Language"%>
   </div>
 
   <div class="field">
