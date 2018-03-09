@@ -3,4 +3,5 @@ class Solution < ApplicationRecord
   do_not_validate_attachment_file_type :submitted_code
 
   belongs_to :user, optional: true
+
 end

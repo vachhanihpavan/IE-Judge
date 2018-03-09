@@ -6,7 +6,7 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   def index
-    @solutions = Solution.all
+    @solutions = Solution.where(:submitted_by => current_user.id)
   end
 
   # GET /solutions/1
