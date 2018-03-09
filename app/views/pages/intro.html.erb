@@ -1,4 +1,3 @@
-
 <div id="home" class="hero-area">
 
   <!-- Backgound Image -->
@@ -107,11 +106,11 @@
       <!-- footer nav -->
       <div class="col-md-6">
         <ul class="footer-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Practice</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><%= link_to 'Login/SignUp', new_user_session_path %></li>
+          <li><%= link_to 'Solutions', solutions_path %></li>
+          <li><%= link_to 'Problems', problems_path %></li>
+          <li><%= link_to 'Meet The Team' , team_path %></li>
         </ul>
       </div>
       <!-- /footer nav -->
@@ -122,23 +121,10 @@
     <!-- row -->
     <div id="bottom-footer" class="row">
 
-      <!-- social -->
-      <div class="col-md-4 col-md-push-8">
-        <ul class="footer-social">
-          <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
-          <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-          <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-          <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-        </ul>
-      </div>
-      <!-- /social -->
-
       <!-- copyright -->
-      <div class="col-md-8 col-md-pull-4">
+      <div class="col-md-8 col-md-7">
         <div class="footer-copyright">
-          <span>&copy; Copyright 2018. All Rights Reserved. | Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by IE</span>
+          <span>&copy; Copyright 2018. All Rights Reserved. | Made with <i class="fa fa-heart" aria-hidden="true"></i> by IE</span>
         </div>
       </div>
       <!-- /copyright -->
@@ -151,7 +137,3 @@
 
 </footer>
 <!-- /Footer -->
-
-<!-- preloader -->
-<div id='preloader'><div class='preloader'></div></div>
-<!-- /preloader -->
