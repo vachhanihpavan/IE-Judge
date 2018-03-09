@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :solutions
   resources :problems
 
-  root 'solutions#index'
+  root 'pages#intro'
+
+  get '/intro', to: 'pages#intro'
+  get '/team', to: 'pages#team'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

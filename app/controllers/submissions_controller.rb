@@ -102,8 +102,8 @@ class SubmissionsController < ApplicationController
         puts "#{stderr}"
         return stderr
       end
-
       return stdout2
+
     elsif lang.to_s == "c++"
       compile_command = "g++ public/codes/submitted_codes/#{name}"
       stdout, stderr, stdstatus = Open3.capture3(compile_command)
@@ -129,8 +129,17 @@ class SubmissionsController < ApplicationController
         puts "#{stderr}"
         return stderr
       end
-    else
-      return "No Lang"
+
+    elsif lang.to_s == "python"
+    compile_command = "python public/codes/submitted_codes/#{name}"
+    stdout, stderr, stdstatus = Open3.capture3(compile_command)
+      if stdstatus.success?
+        return stdout.to_s
+      else
+        stderr = stderr.prepend("CE")
+        puts "#{stderr}"
+        return stderr
+      end
     end
 
   end
