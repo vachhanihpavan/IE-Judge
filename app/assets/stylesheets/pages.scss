@@ -9,7 +9,19 @@
   bottom:0;
   background-position:center;
   background-size:cover;
-  background-image: image-url('about.png');
+  background-image: image-url('back.jpg');
+}
+
+.section .bg-image {
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  height: 120%;
+  background-position:left;
+  background-size:cover;
+  background-image: image-url('cta1-background.jpg');
 }
 
 .bg-image.bg-parallax {
