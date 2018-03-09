@@ -6,6 +6,8 @@
 
 body {
   padding-top: 54px;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 @media (min-width: 992px) {
@@ -17,3 +19,8 @@ body {
     margin-top: 80px;
     margin-bottom: 80px;
 }
+
+.navbar-brand {
+    font-size: 150%;
+}
+

@@ -29,6 +29,8 @@ class SubmissionsController < ApplicationController
   def create
     paramc = submission_params
     @this_solution = Solution.find_by id:paramc[:solution_id]
+    @this_problem = Problem.find_by id:@this_solution.problem_id
+    @creator_code = @this_problem.correct_code
     out_string = compile(@this_solution.language,submission_params[:code_name])
     if(out_string.include?('CE'))
       puts "Error1: #{out_string}"
