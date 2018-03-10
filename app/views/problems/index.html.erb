@@ -1,9 +1,8 @@
-<div class="bg-image bg-parallax overlay"></div>
+
 <p id="notice"><%= notice %></p>
-
-<h1>Problems</h1>
-
-<table>
+<div class="container" id="sub_main_con" style="padding-top: 50px;">
+  <h1>Problems</h1>
+<table class="table table-bordered table-striped table-hover table-responsive">
   <thead>
     <tr>
       <th>Title</th>
@@ -15,8 +14,8 @@
   <tbody>
     <% @problems.each do |problem| %>
       <tr>
-        <td><%= problem.title %></td>
-        <td><%= problem.description %></td>
+        <td style="width: 5%"><%= problem.title %></td>
+        <td> style="width: 5%"<%= problem.description %></td>
         <td><%= link_to 'Show', problem %></td>
         <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
         <td><%= link_to 'Destroy', problem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,3 +28,4 @@
 <% unless current_user.solver_role? %>
   <%= link_to 'New Problem', new_problem_path %>
 <% end %>
+</div>
