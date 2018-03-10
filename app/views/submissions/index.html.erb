@@ -1,33 +1,34 @@
-<%= stylesheet_link_tag 'style.css', media: 'all' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Submissions</h1>
+<div class="container" id="sub_main_con" style="padding-top: 50px;">
+    <h1>Submissions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Solution</th>
-      <th>Result</th>
-      <th>Output</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table class="table table-bordered table-striped table-hover table-responsive">
+      <thead>
+        <tr>
+          <th>Solution</th>
+          <th>Result</th>
+          <th>Output</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @submissions.each do |submission| %>
-      <tr>
-        <td><%= submission.solution_id %></td>
-        <td><%= submission.result %></td>
-        <td><%= submission.output %></td>
-        <td><%= link_to 'Show', submission %></td>
-        <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
-        <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @submissions.each do |submission| %>
+          <tr class="submission">
+            <td style="width: 5%"><%= submission.solution_id %></td>
+            <td style="width: 15%"><%= submission.result %></td>
+            <td style="width: 70%"><%= truncate submission.output, length: 95, separator: /\w+/ %></td>
+            <td><%= link_to 'Show', submission, {:class => "submission_btns", :style =>'background_color: snow' }%></td>
+            <td><%= link_to 'Edit', edit_submission_path(submission), :class => "submission_btns" %></td>
+            <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' }, :class => "submission_btns" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <br>
+  <%= button_to 'New Submission', new_submission_path %>
+</div>
 
-<br>
 
-<%= link_to 'New Submission', new_submission_path %>
 

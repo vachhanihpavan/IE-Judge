@@ -30,21 +30,19 @@ class SubmissionsController < ApplicationController
     paramc = submission_params
     @this_solution = Solution.find_by id:paramc[:solution_id]
     @this_problem = Problem.find_by id:@this_solution.problem_id
-    @creator_code = @this_problem.correct_code
-    out_string = compile(@this_solution.language,submission_params[:code_name])
+    out_string = compile(@this_solution.language,submission_params[:code_name],@this_problem.input)
+    puts "Pvn:#{out_string}"
     if(out_string.include?('CE'))
-      puts "Error1: #{out_string}"
-      out_string[0]=""
-      out_string[0]=""
-      puts "Error: #{out_string}"
-      paramc[:output] = out_string
+      out_string.slice!(0,38)
+      out_string.slice!("public/codes/submitted_codes")
+      paramc[:output] = out_string.slice!(0,36)
       paramc[:result] = "Compilation Error"
     else
       paramc[:output] = out_string
       @this_solution = Solution.find_by id:paramc[:solution_id]
       @this_problem = Problem.find_by id:@this_solution.problem_id
       puts "Corr Out: #{@this_problem.correct_output}"
-      if(@this_problem.correct_output == out_string)
+      if(@this_problem.correct_output.squish == out_string.squish)
         paramc[:result] = "Correct Answer"
       else
         paramc[:result] = "Wrong Answer"
@@ -88,30 +86,29 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  def compile(lang, name)
+  def compile(lang, name,inputs)
     if lang.to_s == "c"
       compile_command = "cc public/codes/submitted_codes/#{name}"
       stdout, stderr, stdstatus = Open3.capture3(compile_command)
       if stdstatus.success?
         run_command = "./a.out"
-        stdout2, stderr2, stdstatus2 = Open3.capture3(run_command)
+        stdout2, stderr2, stdstatus2 = Open3.capture3(run_command, :stdin_data=>inputs)
         stdout, stderr, stdstatus = Open3.capture3("rm a.out")
-        stdout2 = stdout2.to_s
+        return stdout2
       else
         stderr = stderr.prepend("CE")
         puts "#{stderr}"
         return stderr
       end
-      return stdout2
 
     elsif lang.to_s == "c++"
       compile_command = "g++ public/codes/submitted_codes/#{name}"
       stdout, stderr, stdstatus = Open3.capture3(compile_command)
       if stdstatus.success?
         run_command = "./a.out"
-        stdout2, stderr2, stdstatus2 = Open3.capture3(run_command)
+        stdout2, stderr2, stdstatus2 = Open3.capture3(run_command, :stdin_data=>inputs)
         stdout, stderr, stdstatus = Open3.capture3("rm a.out")
-        stdout2 = stdout2.to_s
+        #stdout2 = stdout2.to_s
         return stdout2
       else
         stderr = stderr.prepend("CE")
@@ -121,7 +118,7 @@ class SubmissionsController < ApplicationController
 
     elsif lang.to_s == "ruby"
       compile_command = "ruby public/codes/submitted_codes/#{name}"
-      stdout, stderr, stdstatus = Open3.capture3(compile_command)
+      stdout, stderr, stdstatus = Open3.capture3(compile_command, :stdin_data=>inputs)
       if stdstatus.success?
         return stdout.to_s
       else
@@ -132,7 +129,7 @@ class SubmissionsController < ApplicationController
 
     elsif lang.to_s == "python"
     compile_command = "python public/codes/submitted_codes/#{name}"
-    stdout, stderr, stdstatus = Open3.capture3(compile_command)
+    stdout, stderr, stdstatus = Open3.capture3(compile_command, :stdin_data=>inputs)
       if stdstatus.success?
         return stdout.to_s
       else

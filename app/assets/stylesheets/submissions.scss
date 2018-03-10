@@ -1,3 +1,89 @@
 // Place all the styles related to the Submissions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #798696;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin-top: 12px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #374050;
+}
+
+h1 {
+  font-size:38px;
+}
+
+h2 {
+  font-size:30px;
+}
+
+h3 {
+  font-size:24px;
+}
+
+h4 {
+  font-size:18px;
+}
+
+a {
+  font-family: 'Lato', sans-serif;
+  color: #374050;
+  font-weight: 700;
+}
+
+a:hover,
+a:focus{
+  text-decoration: none;
+  outline: none;
+  color: #374050;
+  opacity: 0.9;
+}
+
+ul,ol{
+  margin: 0;
+  padding: 0;
+  list-style: none
+}
+
+.white-text {
+  color: #FFF;
+}
+
+blockquote {
+  position: relative;
+  margin: 20px 0px;
+  padding: 20px 20px 20px 60px;
+  border-left: none;
+  color: #374050;
+}
+
+blockquote:before{
+  content:"\f10d";
+  font-family:fontAwesome;
+  position:absolute;
+  left:0;
+  top:0;
+  color: #FF6700;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #EBEBEB;
+}
+
+.table tbody tr:hover td, .table tbody tr:hover th {
+  background-color: #ADD8E6;
+}
+
+.submission_btns a:hover{
+  background-color: #c4e3f3;
+  color: snow;
+}
