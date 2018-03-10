@@ -181,19 +181,23 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     transition:0.2s all;
 }
 
-#header.transparent-nav {
+#header.navbar-custom {
     position:absolute;
-    background-color: transparent;
+    background-color: 	transparent;
 }
 
-#header.transparent-nav .main-menu li a {
+#header.navbar-custom .main-menu li a {
     color: white;
 }
 
-#header.transparent-nav .main-menu li a:hover {
+#header.navbar-custom .main-menu li a:hover {
     color: #FFFFFF;
     background-color: transparent;
 
+}
+
+#header.main-menu.navbar-custom {
+    background-color: #798696;
 }
 
 .main-menu li a {

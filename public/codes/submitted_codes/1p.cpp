@@ -1,5 +1,9 @@
 #include<bits/stdc++.h>
 int main()
 {
-	printf("Hello Pavan");
-
+	for(int i=0;;i++)
+	{
+		if(i%100000000==0)
+			printf("%d",i);	
+	}
+}
