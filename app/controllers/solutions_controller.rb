@@ -16,7 +16,6 @@ class SolutionsController < ApplicationController
 
   # GET /solutions/new
   def new
-    puts "#{@all_problems}"
     @solution = Solution.new
   end
 

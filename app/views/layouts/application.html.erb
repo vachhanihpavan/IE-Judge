@@ -4,17 +4,17 @@
     <title>Code Camp</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= stylesheet_link_tag    'bootstrap.min.css', media: 'all' %>
     <%= stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600', media: 'all' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'bootstrap.min.js', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'main.js', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'jquery.min.js', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag 'favicon.png', :rel => 'icon', :type =>  'image/png' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'bootstrap.min.js', 'data-turbolinks-track'=> 'reload' %>
+    <%= javascript_include_tag 'main.js', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'jquery.min.js', 'data-turbolinks-track' => 'reload' %>
+
   </head>
 
-  <body>
+  <body style="padding-top: 53px;">
     <% unless flash.empty? %>
       <script type="text/javascript">
           <% flash.each do |f| %>
@@ -24,7 +24,6 @@
       </script>
     <% end %>
     <%= render 'layouts/header' %>
-    </div>
     <%= yield %>
   </body>
 </html>

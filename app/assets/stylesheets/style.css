@@ -272,6 +272,7 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
     }
 }
 
+
 /* -- Mobile Toggle Btn -- */
 .navbar-toggle {
     position:fixed;

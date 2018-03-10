@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container-fluid" id="sub_main_con" style="background-color: whitesmoke" >
 <h1>Solutions</h1>
 
-<table>
+<table class="table table-bordered table-striped table-hover table-responsive">
   <thead>
     <tr>
       <th>Submitted time</th>
@@ -14,10 +13,10 @@
 
   <tbody>
     <% @solutions.each do |solution| %>
-      <tr>
-        <td><%= solution.submitted_time %></td>
-        <td><%= solution.language %></td>
-        <td><%= solution.problem_id %></td>
+      <tr class="solution">
+        <td style="width: 5%"><%= solution.submitted_time %></td>
+        <td style="width: 15%"><%= solution.language %></td>
+        <td style="width: 100%"> <%= solution.problem_id %></td>
         <td><%= link_to 'Show', solution %></td>
         <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
         <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +27,7 @@
 
 <br>
 
-<%= link_to 'Back to Problems', problems_path %>
+<%= button_to 'Back to Problems', problems_path %>
+  <br>
+  <br>
+</div>

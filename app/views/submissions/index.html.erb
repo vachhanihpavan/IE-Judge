@@ -1,4 +1,4 @@
-<div class="container" id="sub_main_con" style="padding-top: 50px;">
+<div class="container-fluid" id="sub_main_con" style="background-color: whitesmoke">
     <h1>Submissions</h1>
 
     <table class="table table-bordered table-striped table-hover table-responsive">
@@ -23,7 +23,9 @@
       </tbody>
     </table>
   <br>
-  <%= button_to 'New Submission', new_submission_path %>
+  <% unless current_user.solver_role? %>
+    <%= button_to 'New Submission', new_submission_path %>
+  <% end %>
   <br>
 </div>
 
