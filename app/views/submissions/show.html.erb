@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container" id="sub_main_con" style="padding-top: 50px;">
+  <h2>Submission: <%= @submission.id %></h2>
+  <br>
 <p>
   <strong>Solution:</strong>
   <%= @submission.solution_id %>
@@ -14,6 +15,6 @@
   <strong>Output:</strong>
   <%= @submission.output %>
 </p>
-
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+  <br>
+<%= button_to 'Back', submissions_path %>
+</div>

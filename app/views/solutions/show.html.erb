@@ -1,5 +1,6 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container" id="sub_main_con" style="padding-top: 50px;">
+  <h2>Solution: <%= @solution.id %></h2>
+  <br>
 <p>
   <strong>Submitted by:</strong>
   <%= @solution.submitted_by %>
@@ -21,6 +22,9 @@
 </p>
 
 
-<%= link_to 'Edit', edit_solution_path(@solution) %> |
-<%= link_to 'Back to Solutions', solutions_path %> |
-<%= link_to 'Submit Solution', new_submission_path(:solution_id => @solution.id, :code_name => @solution.submitted_code_file_name) %>
+<%= button_to 'Edit', edit_solution_path(@solution) %>
+  <br>
+<%= button_to 'Back to Solutions', solutions_path %>
+  <br>
+<%= button_to 'Submit Solution', new_submission_path(:solution_id => @solution.id, :code_name => @solution.submitted_code_file_name) %>
+</div>

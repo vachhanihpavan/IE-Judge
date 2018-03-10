@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<div class="container" id="sub_main_con" style="padding-top: 50px;">
+  <h2>Problem: <%= @problem.id %></h2>
+  <br>
 
 <p>
   <strong>Title:</strong>
@@ -25,6 +27,8 @@
   <%= simple_format @problem.correct_output %>
 </p>
 
-<%= link_to 'Edit', edit_problem_path(@problem) %> |
-<%= link_to 'Back', problems_path %>
-<%= link_to 'Submit Solution', new_solution_path %>
+<%= button_to 'Edit', edit_problem_path(@problem) %>
+  <br>
+<%= button_to 'Back', problems_path %>
+  <br>
+<%= button_to 'Submit Solution', new_solution_path %>
